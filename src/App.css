@@ -1,0 +1,29 @@
+.center-content {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    /*border: black 1px solid;*/
+}
+
+.center-left-align {
+    width: 50%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.form-box-spacing{
+    padding-bottom: 10px;
+}
+
+.text-right{
+    text-align: right;
+}
+
+.input-box-right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.my-border {
+    border: black 1px solid;
+}

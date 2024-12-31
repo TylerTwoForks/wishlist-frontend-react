@@ -11,11 +11,11 @@
     text-align: left;
 }
 
-.form-box-spacing{
+.form-box-spacing {
     padding-bottom: 10px;
 }
 
-.text-right{
+.text-right {
     text-align: right;
 }
 
@@ -25,5 +25,55 @@
 }
 
 .my-border {
+    margin-top: 40px;
     border: black 1px solid;
+}
+
+.button{
+    background-color: darkorange;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none!important;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+}
+
+.button2 {
+    border-radius: 8px;
+}
+
+.button-left-margin {
+    margin-left: 150px;
+}
+
+.left-nav {
+    width: 200px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #f8f9fa;
+    padding-top: 20px;
+}
+
+.left-nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.left-nav li {
+    padding: 8px 16px;
+}
+
+.left-nav li a {
+    text-decoration: none;
+    color: #000;
+    display: block;
+}
+
+.left-nav li a:hover {
+    background-color: #ddd;
 }

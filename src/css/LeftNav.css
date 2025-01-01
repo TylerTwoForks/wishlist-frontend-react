@@ -1,10 +1,8 @@
 .left-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
+    margin-top: -20px;
+    margin-left: -20px;
+    position: relative;
     background-color: #f8f9fa;
-    padding-top: 20px;
     display: flex;
     flex-direction: column;
 }
@@ -31,7 +29,7 @@
 
 .resize-icon {
     cursor: ew-resize; /* Change cursor to hand */
-    background-color: deepskyblue;
+    background-color: dodgerblue;
     height: 100%;
     position: absolute;
     right: -10px;
@@ -47,7 +45,7 @@
 .resize-handle {
     cursor: ew-resize; /* Change cursor to resize */
     width: 5px; /* Width of the resize handle */
-    background-color: deepskyblue;
+    background-color: dodgerblue;
     height: 100%;
     position: absolute;
     right: 0;

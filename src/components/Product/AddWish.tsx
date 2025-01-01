@@ -1,4 +1,5 @@
 import {useState} from "react";
+import LeftNav from "../Navigation/leftNav.tsx";
 
 function ProductSubmit() {
     const [productUrl, setProductUrl] = useState("");
@@ -32,7 +33,8 @@ function ProductSubmit() {
 
     return (
         <>
-            <form onSubmit={handleSubmit} className="center-content my-border"
+            <LeftNav/>
+            <form onSubmit={handleSubmit} className="center-content my-border main-content"
                   style={{paddingBottom: 10, paddingTop: 10}}>
                 <label className="form-box-spacing center-left-align">
                     Amazon Product URL: &nbsp;

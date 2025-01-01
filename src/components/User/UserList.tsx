@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import User from "./User.tsx";
-import "../../App.css";
+import "../../css/App.css";
 
 function UserList() {
   const [listItems, setListItems] = useState<any[]>([]);

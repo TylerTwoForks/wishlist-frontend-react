@@ -1,0 +1,68 @@
+.left-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #f8f9fa;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.left-nav ul {
+    list-style-type: none;
+    padding: 0;
+    flex-grow: 1;
+}
+
+.left-nav li {
+    padding: 8px 16px;
+}
+
+.left-nav li a {
+    text-decoration: none;
+    color: #000;
+    display: block;
+}
+
+.left-nav li a:hover {
+    background-color: #ddd;
+}
+
+.resize-icon {
+    cursor: ew-resize; /* Change cursor to hand */
+    background-color: deepskyblue;
+    height: 100%;
+    position: absolute;
+    right: -10px;
+    top: 0;
+    margin-top: 50px;
+    border-radius: 10px;
+    opacity: 0; /* Make the icon invisible */
+    transition: opacity .3s; /* Smooth transition for visibility */
+    z-index: 10;
+    user-select: none;
+}
+
+.resize-handle {
+    cursor: ew-resize; /* Change cursor to resize */
+    width: 5px; /* Width of the resize handle */
+    background-color: deepskyblue;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    opacity: 0; /* Make the handle invisible */
+    user-select: none;
+}
+
+.left-nav:hover .resize-icon,
+.resize-icon.active {
+    opacity: 1; /* Make the icon visible when hovering over the nav or when active */
+}
+
+.left-nav:hover .resize-handle,
+.resize-handle.active {
+    opacity: 1;
+}
+

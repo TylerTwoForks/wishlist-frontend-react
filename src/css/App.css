@@ -9,6 +9,10 @@
     overflow: auto;
 }
 
+.left-wishlist{
+    width: fit-content;
+}
+
 .center-content {
     width: 50%;
     margin: 0 auto;
@@ -60,31 +64,12 @@
     margin-left: 150px;
 }
 
-.left-nav {
-    width: 200px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    background-color: #f8f9fa;
-    padding-top: 20px;
+.list-group-item.active {
+    background-color: dimgrey !important;
+    border-color: dimgrey !important;
 }
 
-.left-nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.left-nav li {
-    padding: 8px 16px;
-}
-
-.left-nav li a {
-    text-decoration: none;
-    color: #000;
-    display: block;
-}
-
-.left-nav li a:hover {
-    background-color: #ddd;
+.list-group-item:hover{
+    background-color: lightgrey !important;
+    border-color: lightgrey !important;
 }

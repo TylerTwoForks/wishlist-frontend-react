@@ -1,4 +1,4 @@
-import WishListPage from "./pages/WishListPage.tsx";
+import WishlistPage from "./pages/WishlistPage.tsx";
 import HomePage from "./pages/HomePage.tsx";
 import { BrowserRouter, Route, Routes } from "react-router";
 import AddProductPage from "./pages/AddProductPage.tsx";
@@ -14,7 +14,7 @@ function App() {
               <Route index element={<HomePage />} />
               <Route path="/add-product" element={<AddProductPage />} />
               <Route path="/user-list" element={<UsersPage />} />
-              <Route path="/wishlists" element={<WishListPage />} />
+              <Route path="/wishlists" element={<WishlistPage />} />
             </Routes>
           </div>
         </div>

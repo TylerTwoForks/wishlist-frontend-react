@@ -1,7 +1,7 @@
 import LeftNav from "../components/Navigation/leftNav.tsx";
-import WishListComp from "../components/Product/WishListComp.tsx";
+import WishlistListComp from "../components/Product/WishlistListComp.tsx";
 
-export default function WishLists() {
+export default function Wishlists() {
   return (
       <>
           <div className="app-container">

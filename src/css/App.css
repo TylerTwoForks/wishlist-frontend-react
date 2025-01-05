@@ -11,6 +11,8 @@
 
 .left-wishlist{
     width: fit-content;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .center-content {
@@ -72,4 +74,9 @@
 .list-group-item:hover{
     background-color: lightgrey !important;
     border-color: lightgrey !important;
+}
+
+.right-content {
+    flex: 1;
+    /*margin-left: 20px; !* Optional: Add some space between the divs *!*/
 }

@@ -1,0 +1,21 @@
+/* src/css/WishComp.css */
+
+.wish-comp {
+    width: 500px;
+    position: relative;
+}
+
+.wish-comp .delete-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.wish-comp:hover {
+    cursor: grab;
+}
+
+.wish-comp:active {
+    background-color: yellow;
+}

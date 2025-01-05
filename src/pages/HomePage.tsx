@@ -1,5 +1,4 @@
 import LeftNav from "../components/Navigation/leftNav.tsx";
-import WishlistListComp from "../components/Product/WishlistListComp.tsx";
 
 export default function Wishlists() {
   return (

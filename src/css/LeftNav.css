@@ -55,12 +55,7 @@
 }
 
 .left-nav:hover .resize-icon,
-.resize-icon.active {
-    opacity: 1; /* Make the icon visible when hovering over the nav or when active */
-}
-
-.left-nav:hover .resize-handle,
-.resize-handle.active {
-    opacity: 1;
+.left-nav:hover .resize-handle {
+    opacity: 1; /* Make the icon and handle visible when hovering over the nav */
 }
 

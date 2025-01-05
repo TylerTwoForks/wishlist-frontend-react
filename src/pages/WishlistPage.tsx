@@ -2,7 +2,7 @@ import LeftNav from "../components/Navigation/leftNav.tsx";
 import WishlistListComp from "../components/Product/WishlistListComp.tsx";
 import "../css/App.css";
 import "../css/LeftNav.css";
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import AddWish from "../components/Product/AddWish.tsx";
 import WishComp from "../components/Product/WishComp.tsx";
 
@@ -19,14 +19,10 @@ interface Wish {
     purchased: boolean;
 }
 
-const WishlistPage: React.FC = () => {
+export default function WishlistPag() {
     const [wishLists, setWishlists] = useState<Wishlist[]>([]);
-    // const [selectedItemId, setSelectedItemId] = useState<number>();
+    const [selectedItemId, setSelectedItemId] = useState<number>(0);
     const [wishesToPass, setWishesToPass] = useState<any[]>([]);
-
-    let counter = 0;
-
-    let selectedItemId = 0;
 
     const userId = "1"; //TODO - Example user ID, replace with actual variable
 
@@ -36,6 +32,7 @@ const WishlistPage: React.FC = () => {
                 const response = await fetch(`http://localhost:8080/wish-list/user/${userId}`, {method: "GET"});
                 const data = await response.json();
                 getSelectedId(data)
+                // setWishlists(prevState => [...prevState, data])
                 setWishlists(data)
                 return data;
             } catch (error) {
@@ -47,54 +44,30 @@ const WishlistPage: React.FC = () => {
 
     }, []);
 
-    function getSelectedId(wishLists:Wishlist[]){
-        const selectedId = localStorage.getItem('selectedItemId');
-        if (selectedId) selectedItemId = Number(selectedId)
-        else selectedItemId = wishLists[0].id
-
-        return selectedItemId;
-    }
-
-    // useEffect(() => {
-    //     wishLists.map((wl) => {
-    //         if(wl.id === selectedItemId){
-    //             console.log("gotHere ", wl.wishResDtoList)
-    //             setWishesToPass(wl.wishResDtoList)
-    //         }
-    //     } )
-    //     // for(const wl of wishLists){
-    //     //     console.log("wishList ", wl)
-    //     //     if(wl.id === selectedItemId){
-    //     //         console.log("gotHere ", wl.wishResDtoList)
-    //     //         setWishesToPass(wl.wishResDtoList)
-    //     //     }
-    //     // }
-    // }, [selectedItemId]);
-
     useEffect(() => {
-        console.log('wisard counter '+counter++, wishLists)
         wishLists.map((wl) => {
             if (wl.id === selectedItemId) {
-                console.log('wishesToPass', wishesToPass)
                 setWishesToPass(wl.wishResDtoList)
             }
         })
     }, [wishLists])
 
-    function displayWishes(id: number){
-        console.log('wishlistssss', wishLists)
-        wishLists.map((wl) => {
-            console.log("why aren't we getting here")
+    function getSelectedId(wishLists:Wishlist[]){
+        const selectedId = localStorage.getItem('selectedItemId');
+        if (selectedId) setSelectedItemId(Number(selectedId))
+        else setSelectedItemId(wishLists[0].id)
 
-            if (wl.id === id) {
-                console.log('wishesToPass', wishesToPass)
-                setWishesToPass(wl.wishResDtoList)
-            }
+        return selectedItemId;
+    }
+
+    function displayWishes(id: number){
+        wishLists.map((wl) => {
+            if (wl.id === id) setWishesToPass(wl.wishResDtoList)
         })
     }
 
     const handleItemClick = (id: number) => {
-        selectedItemId = id;
+        setSelectedItemId(id);
         displayWishes(id);
         localStorage.setItem("selectedItemId", id.toString());
     };
@@ -112,7 +85,7 @@ const WishlistPage: React.FC = () => {
                             wishesToPass.length === 0 ? (
                             <>
                                 <p>No Items Found</p>
-                                <div><AddWish/></div>
+                                <div><AddWish wishlistId={selectedItemId}/></div>
                             </>
                         ) : (
                             <div>
@@ -132,4 +105,3 @@ const WishlistPage: React.FC = () => {
     );
 }
 
-export default WishlistPage;

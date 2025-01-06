@@ -1,8 +1,14 @@
 /* src/css/WishComp.css */
 
 .wish-comp {
-    width: 500px;
+    width: 500px !important;
     position: relative;
+}
+
+.wish-comp .list-group-item.active{
+    background-color: lightgrey !important;
+    color: black;
+    border: lightgrey;
 }
 
 .wish-comp .delete-icon {
@@ -14,8 +20,4 @@
 
 .wish-comp:hover {
     cursor: grab;
-}
-
-.wish-comp:active {
-    background-color: yellow;
 }

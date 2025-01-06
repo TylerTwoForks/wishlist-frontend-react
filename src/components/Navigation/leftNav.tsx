@@ -30,8 +30,9 @@ function LeftNav() {
   return (
     <>
       <nav className="left-nav" style={{ width: `${width}px` }}>
-        <SwapHorizIcon className="resize-icon" onMouseDown={handleMouseDown} />
-        <div className="resize-handle" onMouseDown={handleMouseDown}></div>
+        <div className="resize-handle" onMouseDown={handleMouseDown}>
+          <SwapHorizIcon className="resize-icon" onMouseDown={handleMouseDown} />
+        </div>
         <ul>
           <li>
             <Link to="/">Home</Link>

@@ -18,9 +18,9 @@ export default function ListOfWishComp({wishes, onListSelected}: props) {
     };
 
     useEffect(() => {
+        //todo - this is only here so we dont' get an error with this variable.
+        // leaving it in case we need it in the future, it's already here to pass on.
         console.log("setting selected wish id:", selectedWishId)
-        console.log("selectedWish:", wishes)
-
     }, [selectedWishId])
 
     return (
@@ -29,15 +29,15 @@ export default function ListOfWishComp({wishes, onListSelected}: props) {
                     <p>No Items Found</p>
                 ) :
                 (
-                    <div>
-                        <ul className="list-group">
-                            {wishes.map((wish) => (
-                                <li key={wish.id}
-                                    className={`wish-comp list-group-item ${selectedWishId === wish.id ? 'active' : ''}`}>
-                                    <WishComp wish={wish} onListSelected={handleItemClick}/>
-                                </li>
-                            ))}
-                        </ul>
+                    <div className={"list-group wish-comp"}>
+
+                        {wishes.map((wish) => (
+                            <a key={wish.id}
+                               className={`list-group-item ${selectedWishId === wish.id ? 'active' : ''}`}>
+                                <WishComp wish={wish} onListSelected={handleItemClick}/>
+                            </a>
+                        ))}
+
                     </div>
                 )}
         </>

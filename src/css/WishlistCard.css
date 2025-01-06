@@ -4,16 +4,9 @@ wishlist-list is the list of wishlists display
  */
 
 
-.wishlist-list .list-group-item {
+.wishlist-list {
     width: 200px !important;
     position: relative;
-}
-
-
-.wishlist-comp .delete-icon {
-    position: absolute;
-    right: 20px;
-    cursor: pointer;
 }
 
 .wishlist-comp:hover,
@@ -21,11 +14,18 @@ wishlist-list is the list of wishlists display
     cursor: grab;
 }
 
-.list-group-item.active{
+.wishlist-list .list-group-item.active{
     background-color: orangered !important;
     border: orangered;
 }
 
-.wishlist-comp.active{
-    background-color: yellow;
+.wishlist-comp .delete-icon {
+    position: absolute;
+    right: 20px;
+    cursor: pointer;
+}
+
+.wishlist-comp .list-group-item.active{
+    background-color: lightgrey !important;
+    color: black;
 }

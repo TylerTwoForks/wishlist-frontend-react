@@ -5,6 +5,7 @@
     background-color: #f8f9fa;
     display: flex;
     flex-direction: column;
+    z-index: 2;
 }
 
 .left-nav ul {

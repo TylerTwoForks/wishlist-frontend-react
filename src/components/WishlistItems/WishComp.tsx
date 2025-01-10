@@ -21,7 +21,7 @@ function WishComp({ wish, onListSelected}: props) {
     };
 
     //TODO - for this one and wishlist. The div here is smaller than the list-item display so you have to click this div to select.
-    // need to make it so it can click the entire list-item area. 
+    // need to make it so it can click the entire list-item area.
     return (
         <div onClick={() => handleItemClick(wish.id)}>
             URL: <a href={wish.externalUrl} target="_blank" rel="noopener noreferrer">{wish.externalUrl}</a> <br />

@@ -1,11 +1,12 @@
 import LeftNav from "../components/Navigation/leftNav.tsx";
-import ListOfWishlistComp from "../components/Product/ListOfWishlistComp.tsx";
+import ListOfWishlistComp from "../components/Wishlists/ListOfWishlistComp.tsx";
 import "../css/App.css";
 import "../css/LeftNav.css";
-import "../css/WishCard.css"
+import "../css/WishCard.css";
 import {useEffect, useState} from "react";
-import {IWish} from "../components/Product/WishComp.tsx";
-import ListOfWishComp from "../components/Product/ListOfWishComp.tsx";
+import {IWish} from "../components/WishlistItems/WishComp.tsx";
+import ListOfWishComp from "../components/WishlistItems/ListOfWishComp.tsx";
+import {AddWishlistModal} from "../components/Wishlists/AddWishlistModal.tsx";
 
 interface Wishlist {
     id: number;
@@ -13,7 +14,8 @@ interface Wishlist {
     wishResDtoList: IWish[];
 }
 
-export default function WishlistPag() {
+export default function WishlistPage() {
+    const [isSlideOut, setIsSlideOut] = useState<boolean>(false);
     const [wishLists, setWishlists] = useState<Wishlist[]>([]);
     const [selectedItemId, setselectedItemId] = useState<number>(0);
     const [wishesToPass, setWishesToPass] = useState<any[]>([]);
@@ -33,9 +35,10 @@ export default function WishlistPag() {
                 console.error("Error fetching data:", error);
             }
         };
-
-        fetchData()
-
+        fetchData().then(() => {
+                setIsSlideOut(!isSlideOut);
+            }
+        )
     }, []);
 
     useEffect(() => {
@@ -46,7 +49,7 @@ export default function WishlistPag() {
         })
     }, [wishLists])
 
-    function getSelectedId(wishLists:Wishlist[]){
+    function getSelectedId(wishLists: Wishlist[]) {
         const selectedId = localStorage.getItem('selectedItemId');
         if (selectedId) setselectedItemId(Number(selectedId))
         else setselectedItemId(wishLists[0].id)
@@ -54,13 +57,13 @@ export default function WishlistPag() {
         return selectedItemId;
     }
 
-    function displayWishes(id: number){
+    function displayWishes(id: number) {
         wishLists.map((wl) => {
             if (wl.id === id) setWishesToPass(wl.wishResDtoList)
         })
     }
 
-    const handleWishListClicked = (id: number) => {
+    const handleWishlistClicked = (id: number) => {
         setselectedItemId(id);
         displayWishes(id);
         localStorage.setItem("selectedItemId", id.toString());
@@ -70,14 +73,17 @@ export default function WishlistPag() {
         console.log('wishId ', id)
     }
 
+
+
     return (
         <>
             <div className="app-container">
                 <LeftNav/>
-                <div className="left-wishlist">
-                    <ListOfWishlistComp wishLists={wishLists} onListSelected={handleWishListClicked}/>
+                <div className={`left-wishlist ${isSlideOut ? "slide-out" : ""}`}>
+                    <AddWishlistModal/>
+                    <ListOfWishlistComp wishLists={wishLists} onListSelected={handleWishlistClicked}/>
                 </div>
-                <div >
+                <div id={"list-of-wishes"} className={"list-of-wishes"}>
                     <ListOfWishComp wishes={wishesToPass} onListSelected={handleWishClicked}/>
                 </div>
             </div>

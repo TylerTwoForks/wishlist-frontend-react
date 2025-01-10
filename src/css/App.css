@@ -5,25 +5,39 @@
 .app-container {
     display: flex;
     height: 100vh;
+    background-color: #f8f9fa !important;
 }
 
 .main-content {
     flex-grow: 1;
     padding: 20px;
     overflow: auto;
+    background-color: #f8f9fa !important;
+
 }
 
 .left-wishlist{
-    width: fit-content;
-    padding-left: 20px;
-    padding-right: 20px;
+    /*padding-right: 20px;*/
+    margin-top: -20px;
+    margin-right: 20px;
+    background-color: dimgrey;
+    margin-left: -200px;
+    transition: transform .3s ease-in-out;
+    z-index: 1;
+}
+.left-wishlist.slide-out {
+    transform: translateX(100%);
+}
+
+.list-of-wishes{
+    margin-left: 200px;
+    transition: transform 3s ease-in !important;
 }
 
 .center-content {
-    width: 50%;
+    /*width: 50%;*/
     margin: 0 auto;
     text-align: center;
-    /*border: black 1px solid;*/
 }
 
 .center-left-align {
@@ -59,23 +73,25 @@
 
 .button2 {
     border-radius: 8px;
+    width: 20%;
 }
 
 .button-left-margin {
     margin-left: 150px;
 }
 
-.list-group-item.active {
-    background-color: dimgrey !important;
-    border-color: dimgrey !important;
-}
-
-.list-group-item:hover{
-    background-color: lightgrey !important;
-    border-color: lightgrey !important;
-}
-
 .right-content {
     flex: 1;
-    /*margin-left: 20px; !* Optional: Add some space between the divs *!*/
+}
+
+.new-wishlist-button {
+    width: 80%;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.add-button {
+    position: absolute;
+    /*right: 5px;*/
 }

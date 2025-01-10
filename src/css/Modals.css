@@ -1,0 +1,12 @@
+.add-wishlist-modal {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+    background-color: white;
+    border: 2px black solid;
+    box-shadow: 4px 4px;
+    padding: 16px;
+    border-radius: 15px;
+}

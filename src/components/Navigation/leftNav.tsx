@@ -4,6 +4,7 @@ import "../../css/LeftNav.css";
 import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
 
 function LeftNav() {
+  const [isSlideOut, setIsSlideOut] = useState<boolean>(false);
   const [width, setWidth] = useState(200);
   const minWidth = 150; // Set the minimum width
 
@@ -27,6 +28,10 @@ function LeftNav() {
     document.querySelector(".resize-handle")?.classList.add("active");
   };
 
+  const toggleSlideOut = () => {
+    setIsSlideOut(!isSlideOut);
+  };
+
   return (
     <>
       <nav className="left-nav" style={{ width: `${width}px` }}>
@@ -44,7 +49,7 @@ function LeftNav() {
             <Link to="/user-list">User List</Link>
           </li>
           <li>
-            <Link to={"/wishlists"}>Wish List Page</Link>
+            <Link to={"/wishlists"} onClick={toggleSlideOut}>Wish List Page</Link>
           </li>
         </ul>
       </nav>

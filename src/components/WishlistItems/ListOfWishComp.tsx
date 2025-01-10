@@ -32,10 +32,10 @@ export default function ListOfWishComp({wishes, onListSelected}: props) {
                     <div className={"list-group wish-comp"}>
 
                         {wishes.map((wish) => (
-                            <a key={wish.id}
+                            <div key={wish.id}
                                className={`list-group-item ${selectedWishId === wish.id ? 'active' : ''}`}>
                                 <WishComp wish={wish} onListSelected={handleItemClick}/>
-                            </a>
+                            </div>
                         ))}
 
                     </div>

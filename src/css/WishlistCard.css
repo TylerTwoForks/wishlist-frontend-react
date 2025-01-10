@@ -5,13 +5,14 @@ wishlist-list is the list of wishlists display
 
 
 .wishlist-list {
-    width: 200px !important;
-    position: relative;
+    width: 200px;
 }
+
 
 .wishlist-comp:hover,
 .wishlist-list:hover{
     cursor: grab;
+    background-color: lightgrey;
 }
 
 .wishlist-list .list-group-item.active{
@@ -19,13 +20,15 @@ wishlist-list is the list of wishlists display
     border: orangered;
 }
 
-.wishlist-comp .delete-icon {
-    position: absolute;
-    right: 20px;
-    cursor: pointer;
+.wishlist-list .list-group-item{
+    border-radius: 0 !important;
+    background-color: #f8f9fa !important;
+    border-color: #f8f9fa !important;
 }
 
-.wishlist-comp .list-group-item.active{
-    background-color: lightgrey !important;
-    color: black;
+
+.wishlist-comp .delete-icon {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
 }

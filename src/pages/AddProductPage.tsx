@@ -1,7 +1,7 @@
 import LeftNav from "../components/Navigation/leftNav.tsx";
 import "../css/App.css";
 import "../css/LeftNav.css";
-import AddWish from "../components/Product/AddWish.tsx";
+// import AddWish from "../components/WishlistItems/AddWish.tsx";
 
 export default function AddProductPage() {
     return (
@@ -9,7 +9,7 @@ export default function AddProductPage() {
             <div className="app-container">
                 <LeftNav/>
                 <div className="main-content">
-                    <AddWish/>
+
                 </div>
             </div>
         </>

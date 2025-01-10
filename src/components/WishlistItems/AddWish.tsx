@@ -34,7 +34,6 @@ function ProductSubmit({wishlistId}: props) {
                     setQuantity(1);
                 } else {
                     console.log("wishlist Id after:", wishlistId)
-
                     alert("Failed to save product URL.");
                 }
             })
@@ -49,7 +48,7 @@ function ProductSubmit({wishlistId}: props) {
             <form
                 onSubmit={handleSubmit}
                 className="center-content my-border main-content"
-                style={{paddingBottom: 10, paddingTop: 10}}
+                // style={{paddingBottom: 10, paddingTop: 10}}
             >
                 <label className="form-box-spacing center-left-align">
                     Amazon Product URL: &nbsp;

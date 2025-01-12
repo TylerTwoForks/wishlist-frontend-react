@@ -5,10 +5,10 @@ import {useState} from "react";
 
 interface props {
     id:number;
-    deleteWishlist: (newType: number) => void;
+    handleDelete: (newType: number) => void;
 }
 
-export function DeleteComp({deleteWishlist, id}:props) {
+export function DeleteComp({handleDelete, id}:props) {
     const [showModal, setShowModal] = useState(false);
 
     const handleDeleteClick = () => {
@@ -36,7 +36,7 @@ export function DeleteComp({deleteWishlist, id}:props) {
                         <Button variant="contained"  onClick={handleClose} className={"cancel-modal-button"}>
                             Cancel
                         </Button>
-                        <Button variant="contained" className={"delete-modal-button"} onClick={() => deleteWishlist(id)}>
+                        <Button variant="contained" className={"delete-modal-button"} onClick={() => handleDelete(id)}>
                             Delete
                         </Button>
                     </Box>

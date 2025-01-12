@@ -1,4 +1,4 @@
-import DeleteIcon from '@mui/icons-material/Delete';
+import {DeleteComp} from "../DeleteComp.tsx";
 
 export interface IWish {
     id: number
@@ -10,24 +10,29 @@ export interface IWish {
 
 interface props {
     wish: IWish
-    onListSelected: (newType: number) => void;
+    onWishSelected: (newType: number) => void;
+    selectedId: number
 }
 
 
-function WishComp({wish, onListSelected}: props) {
+function WishComp({wish, onWishSelected, selectedId}: props) {
 
     const handleItemClick = (id: number) => {
-        onListSelected(id);
+        onWishSelected(id);
     };
+    const handleDelete = () => {
+
+    }
 
     return (
         <>
-            <div onClick={() => handleItemClick(wish.id)}>
+            <div className={`list-group-item ${selectedId === wish.id ? 'active' : ''}`}
+                 onClick={() => handleItemClick(wish.id)} >
                 URL: <a href={wish.externalUrl} target="_blank" rel="noopener noreferrer">{wish.externalUrl}</a> <br/>
                 Notes: {wish.notes}<br/>
                 Quantity: {wish.qtyRequested}
+                <DeleteComp id={wish.id} handleDelete={() => handleDelete()}/>
             </div>
-            <DeleteIcon className={"delete-icon"}/>
         </>
     );
 }

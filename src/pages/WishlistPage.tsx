@@ -28,7 +28,7 @@ export default function WishlistPage() {
             }
 
         })
-    }, []);
+    }, [isSlideOut]);
 
     useEffect(() => {
         wishLists.map((wl) => {
@@ -55,10 +55,6 @@ export default function WishlistPage() {
         displayWishes(id);
         localStorage.setItem("selectedItemId", id.toString());
     };
-
-    const handleWishClicked = (id: number) => {
-        console.log('wishId ', id)
-    }
 
     function getSelectedId(wishLists: Wishlist[]) {
         const selectedId = localStorage.getItem('selectedItemId');
@@ -87,7 +83,7 @@ export default function WishlistPage() {
                     <ListOfWishlistComp wishLists={wishLists} onListSelected={handleWishlistClicked} onDeletedWishlist={removeDeleted}/>
                 </div>
                 <div id={"list-of-wishes"} className={"list-of-wishes"}>
-                    <ListOfWishComp wishes={wishesToPass} onListSelected={handleWishClicked}/>
+                    <ListOfWishComp wishes={wishesToPass}/>
                 </div>
             </div>
         </>

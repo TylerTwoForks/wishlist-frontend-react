@@ -11,7 +11,6 @@ function ProductSubmit({wishlistId}: props) {
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
-        console.log("wishlist Id:", wishlistId)
 
         await fetch("http://localhost:8080/wish", {
             method: "POST",
@@ -33,7 +32,6 @@ function ProductSubmit({wishlistId}: props) {
                     setNotes("");
                     setQuantity(1);
                 } else {
-                    console.log("wishlist Id after:", wishlistId)
                     alert("Failed to save product URL.");
                 }
             })

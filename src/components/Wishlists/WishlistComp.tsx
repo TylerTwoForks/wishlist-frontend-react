@@ -16,18 +16,13 @@ interface props {
 function WishlistComp({wishlist, onListSelected, selected, onDeletedWishlist}:props){
 
     const handleItemClick = (id: number) => {
-        console.log('handleItemClick ', id)
         onListSelected(id);
     };
 
     const deleteWishlist = async (id: number) => {
-        // event.preventDefault()
-        console.log("wishlistId: ",id)
         await fetch(`http://localhost:8080/wish-list/${wishlist.id}`, {
             method: "DELETE",
             headers: {"Content-Type":"application/json"}
-        }).then(res => {
-            console.log('res', res)
         })
         onDeletedWishlist(id);
     }
@@ -36,7 +31,7 @@ function WishlistComp({wishlist, onListSelected, selected, onDeletedWishlist}:pr
         <div className={`wishlist-comp list-group-item ${selected === wishlist.id ? 'active' : ''}`}
              onClick={() => handleItemClick(wishlist.id)}>
             {wishlist.name}
-            <DeleteComp id={wishlist.id} deleteWishlist={deleteWishlist}/>
+            <DeleteComp id={wishlist.id} handleDelete={deleteWishlist}/>
         </div>
     );
 

@@ -1,15 +1,12 @@
 import React, {useState} from "react";
-import {Link, useLocation} from "react-router";
+import {Link} from "react-router";
 import "../../css/LeftNav.css";
 import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
 
 function LeftNav() {
-    const [isSlideOut, setIsSlideOut] = useState<boolean>(false);
     const [width, setWidth] = useState(200);
     const [activeKey, setActiveKey] = useState<string>("");
     const minWidth = 150; // Set the minimum width
-
-    const location = useLocation();
 
     const handleMouseDown = (e: React.MouseEvent) => {
         const startX = e.clientX;
@@ -32,8 +29,6 @@ function LeftNav() {
     };
 
     const handleClick = (key: string) => {
-        console.log("location", location)
-        setIsSlideOut(!isSlideOut);
         setActiveKey(key);
     };
 

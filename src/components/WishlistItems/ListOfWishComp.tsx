@@ -4,24 +4,21 @@ import {useEffect, useState} from "react";
 
 interface props {
     wishes: IWish[]
-    onListSelected: (newType: number) => void;
 }
 
-export default function ListOfWishComp({wishes, onListSelected}: props) {
+export default function ListOfWishComp({wishes}: props) {
 
-    const [selectedWishId, setSelectedWishId] = useState<number>();
+    const [selectedWishId, setSelectedWishId] = useState<number>(0);
 
     const handleItemClick = (id: number) => {
         setSelectedWishId(id);
-
-        onListSelected(id);
+        localStorage.setItem('selectedWishId', id.toString())
     };
 
     useEffect(() => {
-        //todo - this is only here so we dont' get an error with this variable.
-        // leaving it in case we need it in the future, it's already here to pass on.
-        console.log("setting selected wish id:", selectedWishId)
-    }, [selectedWishId])
+        const selectedItemLocal = localStorage.getItem('selectedWishId');
+        if (selectedItemLocal) setSelectedWishId(Number(selectedItemLocal));
+    }, [])
 
     return (
         <>
@@ -30,14 +27,19 @@ export default function ListOfWishComp({wishes, onListSelected}: props) {
                 ) :
                 (
                     <div className={"list-group wish-comp"}>
-
                         {wishes.map((wish) => (
-                            <div key={wish.id}
-                               className={`list-group-item ${selectedWishId === wish.id ? 'active' : ''}`}>
-                                <WishComp wish={wish} onListSelected={handleItemClick}/>
-                            </div>
-                        ))}
+                            <WishComp
+                                key={wish.id}
+                                wish={wish}
+                                onWishSelected={handleItemClick}
+                                selectedId={selectedWishId}
+                                className
+                            />
 
+                            // <div key={wish.id} className={`list-group-item ${selectedWishId === wish.id ? 'active' : ''}`}>
+                            //     <WishComp wish={wish} onListSelected={handleItemClick}/>
+                            // </div>
+                        ))}
                     </div>
                 )}
         </>

@@ -20,7 +20,6 @@ export default function ListOfWishlistComp({wishLists, onListSelected, onDeleted
      */
     useEffect(() => {
         const selectedItemLocal = localStorage.getItem('selectedItemId');
-        console.log('selectedItemLocal:', selectedItemLocal)
         if (selectedItemLocal) setSelectedItemId(Number(selectedItemLocal))
     }, []);
 

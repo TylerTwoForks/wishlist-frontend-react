@@ -2,12 +2,9 @@ import endpointUrls from "../endopintUrls.tsx";
 import {useEffect} from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-interface props {
 
-    id:number
-}
 
-export function DeleteWishComp({id}:props) {
+export function DeleteWishComp() {
 
     useEffect(() => {
         const deleteWish = async () => {
@@ -25,7 +22,6 @@ export function DeleteWishComp({id}:props) {
 
         }
         deleteWish();
-        console.log(id)
     }, []);
 
     return (

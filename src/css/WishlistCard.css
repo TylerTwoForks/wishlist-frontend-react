@@ -12,18 +12,23 @@ wishlist-list is the list of wishlists display
 .wishlist-comp:hover,
 .wishlist-list:hover{
     cursor: grab;
-    background-color: lightgrey;
+    background-color: lightgrey !important;
 }
 
 .wishlist-list .list-group-item.active{
-    background-color: orangered !important;
-    border: orangered;
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    border-top: #BB8034;
+    border-right: #BB8034;
+    border-bottom: #BB8034;
+    border-left: 4px solid #423D37 !important;
+    color: black;
+    solid-opacity: 40%;
 }
 
 .wishlist-list .list-group-item{
     border-radius: 0 !important;
-    background-color: #f8f9fa !important;
-    border-color: #f8f9fa !important;
+    background-color: #EFE5DC !important;
+    border-color: #EFE5DC !important;
 }
 
 

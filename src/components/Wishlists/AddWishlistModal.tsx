@@ -21,7 +21,7 @@ export function AddWishlistModal() {
                 </button>
             </div>
             <Modal open={open} onClose={handleClose}>
-                <Box className={"add-wishlist-modal"}>
+                <Box className={"base-modal"}>
                     <AddWishlistComp/>
                 </Box>
             </Modal>

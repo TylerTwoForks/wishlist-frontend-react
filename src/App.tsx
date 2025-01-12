@@ -3,10 +3,12 @@ import HomePage from "./pages/HomePage.tsx";
 import { BrowserRouter, Route, Routes } from "react-router";
 import AddProductPage from "./pages/AddProductPage.tsx";
 import UsersPage from "./pages/UsersPage.tsx";
+import {HeaderComp} from "./components/Navigation/HeaderComp.tsx";
 
 function App() {
   return (
     <>
+      <HeaderComp/>
       <BrowserRouter>
         <div>
           <div className="main-content">

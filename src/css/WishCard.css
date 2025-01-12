@@ -1,14 +1,23 @@
 /* src/css/WishComp.css */
 
 .wish-comp {
-    width: 500px !important;
+    width: 100% !important;
+    margin-right: 40px !important;
     position: relative;
 }
 
 .wish-comp .list-group-item.active{
-    background-color: lightgrey !important;
-    color: black;
+    background-color: #BB8034 !important;
+    color: black !important;
     border: lightgrey;
+}
+
+.wish-comp a {
+    text-decoration: none !important;
+}
+
+.wish-comp .list-group-item.active a{
+    color: white !important;
 }
 
 .wish-comp .delete-icon {

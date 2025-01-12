@@ -2,38 +2,46 @@
     margin-top: -20px;
     margin-left: -20px;
     position: relative;
-    background-color: #f8f9fa;
+    background-color: #EFE5DC;
     display: flex;
     flex-direction: column;
     z-index: 2;
+    border-right: 1px #423D37 solid;
 }
 
-.left-nav ul {
-    list-style-type: none;
-    padding: 0;
-    flex-grow: 1;
+.left-nav-top-margin {
+    margin-top: 20px;
 }
 
-.left-nav li {
-    padding: 8px 16px;
+.left-nav .list-group{
+    border-radius: 0;
+    border: 0;
 }
 
-.left-nav li a {
-    text-decoration: none;
-    color: #000;
-    display: block;
+.left-nav .list-group-item{
+    border-radius: 0;
+    border: 0;
+    color: #423D37;
+    background-color: #EFE5DC;
 }
 
-.left-nav li a:hover {
-    background-color: #ddd;
+.left-nav .list-group-item:active {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    border-top: #BB8034;
+    border-right: #BB8034;
+    border-bottom: #BB8034;
+    border-left: 4px solid #423D37 !important;
+    color: black;
+    solid-opacity: 40%;
 }
 
 .resize-icon {
     z-index: 10;
-    background-color: dodgerblue;
+    background-color: #423D37;
+    color: #423D37;
     position: absolute;
     right: -10px;
-    margin-top: 50px;
+    margin-top: 30px;
     border-radius: 8px;
     user-select: none;
 }
@@ -41,13 +49,16 @@
 .resize-handle {
     cursor: ew-resize; /* Change cursor to resize */
     width: 5px; /* Width of the resize handle */
-    background-color: dodgerblue;
+    background-color: #423D37;
+    color: #423D37;
     height: 100%;
     position: absolute;
     right: 0;
     top: 0;
     opacity: 0; /* Make the handle invisible */
     user-select: none;
+    z-index: 11;
+
 }
 
 .resize-handle:hover

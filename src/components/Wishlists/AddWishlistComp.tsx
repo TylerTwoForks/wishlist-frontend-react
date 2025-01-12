@@ -1,10 +1,11 @@
-import React, {useState} from "react";
+import {useState} from "react";
 
 export function AddWishlistComp() {
     const[listName, setListName] = useState("");
 
 
-    const handleSubmit = async (event: React.FormEvent) => {
+    const handleSubmit = async () => {
+
         await fetch("http://localhost:8080/wish-list", {
             method: "POST",
             headers: {

@@ -3,14 +3,16 @@ import "../../css/App.css";
 import "../../css/WishlistCard.css"
 import {useEffect, useState} from "react";
 import WishlistComp, {IWishlist} from "./WishlistComp.tsx";
+import {AddWishlistModal} from "./AddWishlistModal.tsx";
 
 
 interface props {
     wishLists: IWishlist[]
     onListSelected: (newType: number) => void;
+    onDeletedWishlist: (newType: number) => void;
 }
 
-export default function ListOfWishlistComp({wishLists, onListSelected}: props) {
+export default function ListOfWishlistComp({wishLists, onListSelected, onDeletedWishlist}: props) {
     const [selectedItemId, setSelectedItemId] = useState<number>(0);
     /**
      * this is used to set the selectedItemId if there is one stored locally.
@@ -27,22 +29,25 @@ export default function ListOfWishlistComp({wishLists, onListSelected}: props) {
         onListSelected(id);
     };
 
+    const handleWishlistDeleted = (id: number)=> {
+        onDeletedWishlist(id);
+    }
+
     return (
         <>
-            {/*{!wishLists?.length ? (<p>No Items Found</p>) :*/}
-            {/*    (*/}
-                    <>
-                    <div className={"wishlist-list list-group"}>
-                        {wishLists.map((wl) => (
-                            <WishlistComp wishlist={wl}
-                                          onListSelected={handleItemClick}
-                                          selected={selectedItemId}
-                                          key={wl.id}/>
-
-                        ))}
-                    </div>
-                </>
-            {/*)}*/}
+            <>
+                <AddWishlistModal/>
+                <div className={"wishlist-list list-group"}>
+                    {wishLists.map((wl) => (
+                        <WishlistComp wishlist={wl}
+                                      onListSelected={handleItemClick}
+                                      selected={selectedItemId}
+                                      key={wl.id}
+                                      onDeletedWishlist={handleWishlistDeleted}
+                        />
+                    ))}
+                </div>
+            </>
         </>
     );
 }

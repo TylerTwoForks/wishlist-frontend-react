@@ -1,0 +1,42 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #994636;
+    border-bottom: 1px solid #994636;
+    color: white;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.logo svg {
+    margin-top: 3px;
+    /*margin-right: 2px; !* Adjust the spacing between the icon and text *!*/
+}
+
+.search-bar {
+    /*flex-grow: 1;*/
+    margin: 0 20px;
+    width: 500px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+.profile-icon {
+    display: flex;
+    align-items: center;
+    font-size: 1.5em;
+    margin-right: 10px;
+}

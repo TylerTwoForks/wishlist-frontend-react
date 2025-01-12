@@ -1,4 +1,4 @@
-.add-wishlist-modal {
+.base-modal {
     position: fixed;
     top: 30%;
     left: 50%;
@@ -9,4 +9,15 @@
     box-shadow: 4px 4px;
     padding: 16px;
     border-radius: 15px;
+}
+
+.delete-modal-button {
+    background-color: #994636 !important;
+    font-weight: bold !important;
+}
+.cancel-modal-button{
+    background-color: #EFE5DC !important;
+    margin-right: 10px !important;
+    color: #423D37 !important;
+    font-weight: bold !important;
 }

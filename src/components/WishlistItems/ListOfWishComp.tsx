@@ -3,10 +3,11 @@ import {useEffect, useState} from "react";
 
 
 interface props {
-    wishes: IWish[]
+    wishes: IWish[];
+    handleWishDeleted: (newType: number) => void;
 }
 
-export default function ListOfWishComp({wishes}: props) {
+export default function ListOfWishComp({wishes, handleWishDeleted}: props) {
 
     const [selectedWishId, setSelectedWishId] = useState<number>(0);
 
@@ -33,12 +34,8 @@ export default function ListOfWishComp({wishes}: props) {
                                 wish={wish}
                                 onWishSelected={handleItemClick}
                                 selectedId={selectedWishId}
-                                className
+                                onWishSDeleted={handleWishDeleted}
                             />
-
-                            // <div key={wish.id} className={`list-group-item ${selectedWishId === wish.id ? 'active' : ''}`}>
-                            //     <WishComp wish={wish} onListSelected={handleItemClick}/>
-                            // </div>
                         ))}
                     </div>
                 )}

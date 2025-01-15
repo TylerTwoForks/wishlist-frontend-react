@@ -4,8 +4,8 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import {useState} from "react";
 
 interface props {
-    id:number;
-    handleDelete: (newType: number) => void;
+    id:number; //id of the item you want to delete.
+    handleDelete: (newType: number) => void; //function to pass in from the parent component that handles the result of deleting.
 }
 
 export function DeleteComp({handleDelete, id}:props) {
@@ -20,9 +20,7 @@ export function DeleteComp({handleDelete, id}:props) {
 
     return (
         <>
-            <DeleteIcon className={"delete-icon"} onClick={() => {
-                handleDeleteClick();
-            }}/>
+            <DeleteIcon className={"delete-icon"} onClick={() => handleDeleteClick()}/>
 
             <Modal open={showModal} onClose={handleClose}>
                 <Box className={"base-modal"}>

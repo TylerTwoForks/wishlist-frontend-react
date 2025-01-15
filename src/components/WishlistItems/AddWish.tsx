@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import "../../css/AddWish.css";
 
 interface props {
     wishlistId: number
@@ -43,46 +44,36 @@ function ProductSubmit({wishlistId}: props) {
 
     return (
         <>
-            <form
-                onSubmit={handleSubmit}
-                className="center-content my-border main-content"
-                // style={{paddingBottom: 10, paddingTop: 10}}
-            >
-                <label className="form-box-spacing center-left-align">
-                    Amazon Product URL: &nbsp;
-                    <input
-                        className="input-box-right"
-                        type="text"
-                        value={productUrl}
-                        onChange={(e) => setProductUrl(e.target.value)}
-                        required
-                    />
-                </label>
-                <br/>
-                <label className="form-box-spacing center-left-align">
+            <form onSubmit={handleSubmit} className="form-container">
+                <div className="form-row">
+                    <label>
+                        URL: &nbsp;
+                        <input
+                            type="text"
+                            value={productUrl}
+                            onChange={(e) => setProductUrl(e.target.value)}
+                            required
+                        />
+                    </label>
+                    <label>
+                        Quantity: &nbsp;
+                        <input
+                            type="number"
+                            value={quantity}
+                            onChange={(e) => setQuantity(Number(e.target.value))}
+                            min="1"
+                            required
+                        />
+                    </label>
+                </div>
+                <label className="notes-label">
                     Notes: &nbsp;
-                    <input
-                        className="input-box-right"
-                        type="text"
+                    <textarea
                         value={notes}
                         onChange={(e) => setNotes(e.target.value)}
                     />
                 </label>
-                <br/>
-                <label className="form-box-spacing center-left-align">
-                    Quantity: &nbsp;
-                    <input
-                        className="input-box-right"
-                        type="number"
-                        value={quantity}
-                        onChange={(e) => setQuantity(Number(e.target.value))}
-                        min="1"
-                        required
-                    />
-                </label>
-                <br/>
-                <br/>
-                <button type="submit">Submit</button>
+                <button type="submit" className="submit-button">Submit</button>
             </form>
         </>
     );

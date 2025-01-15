@@ -6,6 +6,7 @@ import "../css/WishCard.css";
 import {useEffect, useState} from "react";
 import {IWish} from "../components/WishlistItems/WishComp.tsx";
 import ListOfWishComp from "../components/WishlistItems/ListOfWishComp.tsx";
+import AddWish from "../components/WishlistItems/AddWish.tsx";
 
 interface Wishlist {
     id: number;
@@ -16,8 +17,8 @@ interface Wishlist {
 export default function WishlistPage() {
     const [isSlideOut, setIsSlideOut] = useState<boolean>(false);
     const [wishLists, setWishlists] = useState<Wishlist[]>([]);
-    const [selectedItemId, setSelectedItemId] = useState<number>(0);
-    const [wishesToPass, setWishesToPass] = useState<any[]>([]);
+    const [selectedWishlist, setSelectedWishlist] = useState<number>(0);
+    const [wishesToDisplay, setWishesToDisplay] = useState<any[]>([]);
 
     const userId = "1"; //TODO - Example user ID, replace with actual variable
 
@@ -26,23 +27,27 @@ export default function WishlistPage() {
             if(!isSlideOut){
                 setIsSlideOut(true);
             }
-
         })
-    }, [isSlideOut]);
+    }, []);
 
     useEffect(() => {
-        wishLists.map((wl) => {
-            if (wl.id === selectedItemId) {
-                setWishesToPass(wl.wishResDtoList)
-            }
-        })
+        if(wishLists.length === 1) {
+            handleWishlistClicked(wishLists[0].id)
+        }else{
+            wishLists.map((wl) => {
+                if (wl.id === selectedWishlist) {
+                    setWishesToDisplay(wl.wishResDtoList)
+                }
+            })
+        }
+
     }, [wishLists])
 
     const fetchData = async () => {
         try {
             const response = await fetch(`http://localhost:8080/wish-list/user/${userId}`, {method: "GET"});
             const data = await response.json();
-            getSelectedId(data)
+            getSelectedIdForRefresh(data)
             setWishlists(data)
             return data;
         } catch (error) {
@@ -51,28 +56,33 @@ export default function WishlistPage() {
     };
 
     const handleWishlistClicked = (id: number) => {
-        setSelectedItemId(id);
+        setSelectedWishlist(id);
         displayWishes(id);
-        localStorage.setItem("selectedItemId", id.toString());
+        localStorage.setItem("selectedWishlistId", id.toString());
     };
 
-    function getSelectedId(wishLists: Wishlist[]) {
-        const selectedId = localStorage.getItem('selectedItemId');
-        if (selectedId) setSelectedItemId(Number(selectedId))
-        else setSelectedItemId(wishLists[0].id)
+    function getSelectedIdForRefresh(wishLists: Wishlist[]) {
+        const selectedId = localStorage.getItem("selectedWishlistId");
+        if (selectedId) setSelectedWishlist(Number(selectedId))
+        else setSelectedWishlist(wishLists[0].id)
 
-        return selectedItemId;
+        return selectedWishlist;
     }
 
     function displayWishes(id: number) {
         wishLists.map((wl) => {
-            if (wl.id === id) setWishesToPass(wl.wishResDtoList)
+            if (wl.id === id) setWishesToDisplay(wl.wishResDtoList)
         })
     }
 
-    function removeDeleted(id: number){
+    function removeDeletedWishlist(id: number){
         const wishlistsWithRemovedId = wishLists.filter((wl) => wl.id !== id);
         setWishlists(wishlistsWithRemovedId);
+    }
+
+    function removeDeletedWish(id: number){
+        const wishesWithRemovedId = wishesToDisplay.filter((w) => w.id !== id);
+        setWishesToDisplay(wishesWithRemovedId);
     }
 
     return (
@@ -80,11 +90,14 @@ export default function WishlistPage() {
             <div className="app-container">
                 <LeftNav/>
                 <div className={`left-wishlist ${isSlideOut ? "slide-out" : ""}`}>
-                    <ListOfWishlistComp wishLists={wishLists} onListSelected={handleWishlistClicked} onDeletedWishlist={removeDeleted}/>
+                    <ListOfWishlistComp wishLists={wishLists} onListSelected={handleWishlistClicked}
+                                        onDeletedWishlist={removeDeletedWishlist}/>
                 </div>
                 <div id={"list-of-wishes"} className={"list-of-wishes"}>
-                    <ListOfWishComp wishes={wishesToPass}/>
+                    <AddWish wishlistId={selectedWishlist}/>
+                    <ListOfWishComp wishes={wishesToDisplay} handleWishDeleted={removeDeletedWish}/>
                 </div>
+
             </div>
         </>
     );

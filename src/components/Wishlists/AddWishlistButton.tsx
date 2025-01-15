@@ -6,7 +6,7 @@ import "../../css/Modals.css"
 import {AddWishlistComp} from "./AddWishlistComp.tsx";
 
 
-export function AddWishlistModal() {
+export function AddWishlistButton() {
     const [open, setOpen] = React.useState(false);
 
     const handleAddWishlist = () => setOpen(true)

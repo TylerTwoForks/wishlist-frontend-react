@@ -13,7 +13,7 @@ export function AddWishlistComp() {
             },
             body: JSON.stringify({
                 name:listName,
-                userId:1
+                userId:4
             }),
         }).then(res => {
             if(res.ok){

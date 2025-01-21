@@ -20,7 +20,7 @@ export default function WishlistPage() {
     const [selectedWishlist, setSelectedWishlist] = useState<number>(0);
     const [wishesToDisplay, setWishesToDisplay] = useState<any[]>([]);
 
-    const userId = "1"; //TODO - Example user ID, replace with actual variable
+    const userId = "4"; //TODO - Example user ID, replace with actual variable
 
     useEffect(() => {
         fetchData().then(() => {

@@ -23,7 +23,7 @@ function ProductSubmit({wishlistId}: props) {
                 externalUrl: productUrl,
                 notes: notes,
                 qtyRequested: quantity,
-                wishListId: wishlistId,
+                wishlistId: wishlistId,
             }),
         })
             .then(res => {

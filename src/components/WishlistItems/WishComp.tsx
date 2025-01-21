@@ -6,6 +6,9 @@ export interface IWish {
     notes: string;
     qtyRequested: number;
     purchased: boolean;
+    imageUrl: string;
+    price: number;
+    title: string;
 }
 
 interface props {
@@ -35,6 +38,7 @@ function WishComp({wish, onWishSelected, selectedId, onWishSDeleted}: props) {
 
     const handleItemClick = (id: number) => {
         onWishSelected(id);
+        console.log("wish:: ", wish)
     };
     const handleDelete = async () => {
         await fetch(`http://localhost:8080/wish/delete/${wish.id}`, {
@@ -49,10 +53,11 @@ function WishComp({wish, onWishSelected, selectedId, onWishSDeleted}: props) {
         <>
             <div className={`list-group-item ${selectedId === wish.id ? 'active' : ''}`}
                  onClick={() => handleItemClick(wish.id)} >
-                {/*Title: <a href={wish.externalUrl} target="_blank" rel="noopener noreferrer">{wishPreview?.get("title") ?? "Should be a title"}</a> <br/>*/}
-                URL: <a href={wish.externalUrl} target={"_blank"} rel="noopener noreferrer">{wish.externalUrl}</a><br/>
+                <a href={wish.externalUrl} target="_blank" rel="noopener noreferrer">{wish.title ?? "No Title Found"}</a><br/>
+                {/*URL: <a href={wish.externalUrl} target={"_blank"} rel="noopener noreferrer">{wish.externalUrl}</a><br/>*/}
                 Notes: {wish.notes}<br/>
-                Quantity: {wish.qtyRequested}
+                Quantity: {wish.qtyRequested}<br/>
+                <img src={wish.imageUrl} alt="image" style={{width: '500px', height: 'auto'}}/>
                 <DeleteComp id={wish.id} handleDelete={() => handleDelete()}/>
             </div>
         </>

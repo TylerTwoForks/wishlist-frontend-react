@@ -1,66 +1,79 @@
-import {DeleteComp} from "../DeleteComp.tsx";
+import { DeleteComp } from "../DeleteComp.tsx";
+import {Card, CardContent, CardMedia, Typography, IconButton, Divider, CardActionArea} from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
+import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
+
 
 export interface IWish {
-    id: number
+    id: number;
     externalUrl: string;
     notes: string;
     qtyRequested: number;
     purchased: boolean;
-    imageUrl: string;
+    defaultImageUrl: string;
     price: number;
     title: string;
 }
 
 interface props {
-    wish: IWish
-    selectedId: number
+    wish: IWish;
+    selectedId: number;
     onWishSelected: (newType: number) => void;
     onWishSDeleted: (newType: number) => void;
 }
 
-
-function WishComp({wish, onWishSelected, selectedId, onWishSDeleted}: props) {
-
-    //TODO - don't delete the below code yet. This idea can be used when we get Amazon API Access.
-    // I may end up storing this information in the backend on the actual Wish object and just sending it up to be used here.
-
-    // const [wishPreview, setWishPreview] = useState<Map<String, String>>();
-
-    // const buildWishPreview = async (wishUrl:string) =>{
-    //     FetchUrlTitle(wishUrl).then(res => {
-    //         setWishPreview(res);
-    //     })
-    //
-    // }
-    // useEffect(() => {
-    //     buildWishPreview(wish.externalUrl).then()
-    // }, []);
+function WishComp({ wish, onWishSelected, selectedId, onWishSDeleted }: props) {
 
     const handleItemClick = (id: number) => {
         onWishSelected(id);
-        console.log("wish:: ", wish)
+        console.log("wish:: ", wish);
     };
+
     const handleDelete = async () => {
         await fetch(`http://localhost:8080/wish/delete/${wish.id}`, {
             method: "DELETE",
-            headers: {"Content-Type":"application/json"}
-        })
+            headers: { "Content-Type": "application/json" }
+        });
         onWishSDeleted(wish.id);
-        // onDeletedWishlist(id);
-    }
+    };
 
     return (
-        <>
-            <div className={`list-group-item ${selectedId === wish.id ? 'active' : ''}`}
-                 onClick={() => handleItemClick(wish.id)} >
-                <a href={wish.externalUrl} target="_blank" rel="noopener noreferrer">{wish.title ?? "No Title Found"}</a><br/>
-                {/*URL: <a href={wish.externalUrl} target={"_blank"} rel="noopener noreferrer">{wish.externalUrl}</a><br/>*/}
-                Notes: {wish.notes}<br/>
-                Quantity: {wish.qtyRequested}<br/>
-                <img src={wish.imageUrl} alt="image" style={{width: '500px', height: 'auto'}}/>
-                <DeleteComp id={wish.id} handleDelete={() => handleDelete()}/>
-            </div>
-        </>
+
+        <Card className={`wish-card ${selectedId === wish.id ? 'card-active' : ''} center-horizon`} onClick={() => handleItemClick(wish.id)}>
+            <CardActionArea className={"wish-card-media-action-area center-horizon"} href={wish.externalUrl} target={"_blank"} rel={"noopener noreferrer"}>
+                <CardMedia
+                    component="img"
+                    image={wish.defaultImageUrl}
+                    alt="image"
+                    className="wish-card-media"
+                />
+            </CardActionArea>
+            <CardContent className="wish-card-content">
+                <Typography variant="h5" component="div">
+                    <a href={wish.externalUrl} target="_blank" rel="noopener noreferrer">{wish.title ?? "No Title Found"}</a>
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                    Notes: {wish.notes}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                    Quantity: {wish.qtyRequested} | Price: ${wish.price}
+                </Typography>
+                <br/>
+                <Divider className="wish-card-divider" />
+
+                <div className="wish-card-actions">
+                    <IconButton>
+                        <EditIcon />
+                    </IconButton>
+                    <IconButton>
+                        <DeleteComp id={wish.id} handleDelete={() => handleDelete()}/>
+                    </IconButton>
+                </div>
+            </CardContent>
+            <CardContent>
+                <DragIndicatorIcon  className={"wish-card-drag-icon"}/>
+            </CardContent>
+        </Card>
     );
 }
 

@@ -12,6 +12,11 @@ export default function ListOfWishComp({wishes, handleWishDeleted}: props) {
     const [selectedWishId, setSelectedWishId] = useState<number>(0);
 
     const handleItemClick = (id: number) => {
+        if(selectedWishId === id){
+            setSelectedWishId(null);
+            localStorage.removeItem('selectedWishId');
+            return;
+        }
         setSelectedWishId(id);
         localStorage.setItem('selectedWishId', id.toString())
     };
@@ -27,7 +32,7 @@ export default function ListOfWishComp({wishes, handleWishDeleted}: props) {
                     <p>No Items Found</p>
                 ) :
                 (
-                    <div className={"list-group wish-comp"}>
+                    <div>
                         {wishes.map((wish) => (
                             <WishComp
                                 key={wish.id}

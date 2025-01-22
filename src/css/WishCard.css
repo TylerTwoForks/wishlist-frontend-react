@@ -1,33 +1,76 @@
 /* src/css/WishComp.css */
 
-.wish-comp {
-    width: 100% !important;
-    min-width: 500px;
-    margin-right: 40px !important;
-    position: relative;
+
+.wish-card:hover {
+    background-color: #EFE5DC;
+    color: white ;
+    text-decoration: none;
 }
 
-.wish-comp .list-group-item.active{
-    background-color: #BB8034 !important;
-    color: black !important;
-    border: lightgrey;
-}
+.wish-card {
+    display: flex;
+    flex-direction: row;
+    margin: 1rem 0;
+    border: 1px solid #ccc;
+    border-radius: 8px !important;
+    overflow: hidden;
+    max-width: 80%;
 
-.wish-comp a {
+}
+.wish-card-content .a{
+    text-decoration: none !important;
+}
+.center-horizon{
+    align-items: center !important;
+    display: flex !important;
+}
+.wish-card-media {
+    width: fit-content !important;
+    height: fit-content;
+    padding: 10px;
+    border-radius: 15px;
+}
+.wish-card-media-action-area{
+    width: fit-content !important;
+    min-width: 200px;
+    height: fit-content;
+}
+.wish-card a {
     text-decoration: none !important;
 }
 
-.wish-comp .list-group-item.active a{
-    color: white !important;
+.wish-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+    width: 100%;
+    text-decoration: none !important;
 }
 
-.wish-comp .delete-icon {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
+.wish-card-divider {
+    background-color: black;
 }
 
-.wish-comp:hover {
+.wish-card-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.wish-card-drag-icon-card {
+    align-items: center;
+    display: flex;
+}
+
+.wish-card-drag-icon:hover{
     cursor: grab;
+}
+
+
+.card-active {
+    background-color: #994636 !important;
+    color: white !important;
+    text-decoration: none !important;
 }

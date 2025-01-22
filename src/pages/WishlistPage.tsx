@@ -1,4 +1,3 @@
-import LeftNav from "../components/Navigation/leftNav.tsx";
 import ListOfWishlistComp from "../components/Wishlists/ListOfWishlistComp.tsx";
 import "../css/App.css";
 import "../css/LeftNav.css";
@@ -88,7 +87,6 @@ export default function WishlistPage() {
     return (
         <>
             <div className="app-container">
-                <LeftNav/>
                 <div className={`left-wishlist ${isSlideOut ? "slide-out" : ""}`}>
                     <ListOfWishlistComp wishLists={wishLists} onListSelected={handleWishlistClicked}
                                         onDeletedWishlist={removeDeletedWishlist}/>

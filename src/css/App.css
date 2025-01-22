@@ -21,17 +21,9 @@
     margin-top: -20px;
     margin-right: 20px;
     background-color: #EFE5DC;
-    margin-left: -200px;
+    margin-left: -20px;
     transition: transform .3s ease-in-out;
     z-index: 1;
-}
-.left-wishlist.slide-out {
-    transform: translateX(100%);
-}
-
-.list-of-wishes{
-    margin-left: 200px;
-    transition: transform 3s ease-in !important;
 }
 
 .center-content {
@@ -39,41 +31,9 @@
     margin: 0 auto;
     text-align: center;
 }
-
-.center-left-align {
-    width: 50%;
-    margin: 0 auto;
-    text-align: left;
-}
-
-.form-box-spacing {
-    padding-bottom: 10px;
-}
-
-.text-right {
-    text-align: right;
-}
-
-.input-box-right {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.button{
-    background-color: darkorange;
-    border: none;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    text-decoration: none!important;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-}
-
 .button2 {
     border-radius: 8px;
-    width: 20%;
+    width: fit-content;
 }
 
 .button-left-margin {

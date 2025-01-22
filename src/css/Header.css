@@ -3,40 +3,52 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #994636;
-    border-bottom: 1px solid #994636;
-    color: white;
+    background-color: #EFE5DC;
+    border-bottom: 1px solid #423D37;
 }
 
 .logo {
     display: flex;
-    align-items: center;
-    font-size: 1.5em;
+    align-content: center;
+    font-size: 1.3em;
     font-weight: bold;
     margin-left: 20px;
+    color: #423D37;
+    text-decoration: none!important;
 }
 
-.logo svg {
-    margin-top: 3px;
-    /*margin-right: 2px; !* Adjust the spacing between the icon and text *!*/
+.listeroo-name{
+    font-size: 24px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1rem;
+    margin-left: 4rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #423D37;
+    font-size: 1rem;
 }
 
 .search-bar {
-    /*flex-grow: 1;*/
-    margin: 0 20px;
-    width: 500px;
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 1rem;
 }
 
 .search-bar input {
-    width: 100%;
-    padding: 5px;
-    border: 1px solid #ced4da;
+    width: 200px;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
     border-radius: 4px;
 }
 
 .profile-icon {
     display: flex;
     align-items: center;
-    font-size: 1.5em;
-    margin-right: 10px;
+    margin-left: 1rem;
 }
